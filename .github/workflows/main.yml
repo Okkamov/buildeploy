@@ -7,25 +7,12 @@ on:
       - feature/github_actions
 
 jobs:
-  name: ${{ matrix.os }}-${{ github.workflow }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        include:
-          - os: windows-latest
-            vcpkgCommitId: 'a42af01b72c28a8e1d7b48107b33e4f286a55ef6'
-          - os: ubuntu-latest
-            vcpkgCommitId: 'a42af01b72c28a8e1d7b48107b33e4f286a55ef6'
-          - os: macos-latest
-            vcpkgCommitId: 'a42af01b72c28a8e1d7b48107b33e4f286a55ef6'
-
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          submodules: true
-        
+          submodules: true       
       - uses: lukka/get-cmake@latest
       - name: Dump the content of $RUNNER_TEMP
         run: find $RUNNER_TEMP
