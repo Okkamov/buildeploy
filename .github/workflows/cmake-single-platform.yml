@@ -27,11 +27,11 @@ jobs:
     # This step assumes `vcpkg` has been bootstrapped (run `./vcpkg/bootstrap-vcpkg`)
     - name: Run vcpkg
       run: vcpkg install --dry-run
-    #- name: Configure CMake
-     # run: cmake --preset=default
+    - name: Configure CMake
+      run: cmake . -DPATCH_VERSION=${{ github.run_number }}
 
     - name: Build
-      run: cmake --build .
+      run: cmake --build build
       
     - name: Create Release
       id: create_release
