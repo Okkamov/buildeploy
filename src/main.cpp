@@ -5,7 +5,7 @@
 //#include <iostream>
 
 int main(int, char**) {
-    fmt::print("Hello from otus list demo project!\n");
+    fmt::print("Hello for GitHub Actions!\n");
     fmt::print("fmt version is {}\n"
                "zlib version is {}\n", 
                FMT_VERSION, ZLIB_VERSION);
