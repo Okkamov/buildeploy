@@ -4,7 +4,7 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 set(MY_PROJECT_NAME buildeploy)
-set(EXEC_FILE_NAME bdcli)
+set(EXEC_FILE_NAME buildeploy_cli)
 set(TEST_FILE_NAME testlist)
 
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
