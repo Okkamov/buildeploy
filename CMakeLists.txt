@@ -4,7 +4,7 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 set(MY_PROJECT_NAME buildeploy)
-set(EXEC_FILE_NAME buildeploy_cli)
+set(EXEC_FILE_NAME bdcli)
 set(TEST_FILE_NAME testlist)
 
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
@@ -25,7 +25,7 @@ find_package(fmt CONFIG REQUIRED)
 add_executable(${EXEC_FILE_NAME} ${SOURCES})
 
 set_target_properties(${EXEC_FILE_NAME} PROPERTIES
-    CXX_STANDARD 23
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
 target_link_libraries(${EXEC_FILE_NAME} PRIVATE ZLIB::ZLIB fmt::fmt)
