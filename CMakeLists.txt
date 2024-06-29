@@ -25,7 +25,7 @@ find_package(fmt CONFIG REQUIRED)
 add_executable(${EXEC_FILE_NAME} ${SOURCES})
 
 set_target_properties(${EXEC_FILE_NAME} PROPERTIES
-    CXX_STANDARD 17
+    CXX_STANDARD 23
     CXX_STANDARD_REQUIRED ON
 )
 target_link_libraries(${EXEC_FILE_NAME} PRIVATE ZLIB::ZLIB fmt::fmt)
