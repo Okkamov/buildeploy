@@ -32,7 +32,7 @@
           "type": "FILEPATH",
           "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
         },
-        "PATCH_VERSION": "32"
+        "PATCH_VERSION": "${{ github.run_number }}"
       }
     },
     {
