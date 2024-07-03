@@ -67,6 +67,11 @@ else ()
     )
 endif()
 
+add_custom_target( FinalMessage ALL
+    ${CMAKE_COMMAND} -E cmake_echo_color --cyan "Compilation is over!"
+    COMMENT "Final Message" )
+add_dependencies( FinalMessage ${ALL_TARGETS} )
+
 install(TARGETS ${EXEC_FILE_NAME} RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
