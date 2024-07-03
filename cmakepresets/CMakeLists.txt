@@ -7,7 +7,7 @@ set(MY_PROJECT_NAME buildeploy)
 set(EXEC_FILE_NAME buildeploy) #bdcli
 set(TEST_FILE_NAME testlist)
 
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
+#SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 
 set(SOURCES_DIR ../src/)
 set(INCLUDE_DIR ../include/)
