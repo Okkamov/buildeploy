@@ -9,11 +9,11 @@ set(TEST_FILE_NAME testlist)
 
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 
-set(SOURCES_DIR ./src/)
-set(INCLUDE_DIR ./include/)
+set(SOURCES_DIR ../src/)
+set(INCLUDE_DIR ../include/)
 set(SOURCES ${SOURCES_DIR}main.cpp ${INCLUDE_DIR}list.hpp)
 
-set(TEST_DIR ./test/)
+set(TEST_DIR ../test/)
 set(TEST_SRC testlist.cpp)
 
 project(${MY_PROJECT_NAME} VERSION ${PROJECT_VESRION})
