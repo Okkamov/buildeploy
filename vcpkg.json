@@ -1,4 +1,6 @@
 {
+  "name": "buildeploy",
+  "version-string": "latest",
   "dependencies": [
     "gtest",
     "fmt",
