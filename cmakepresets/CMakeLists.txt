@@ -66,3 +66,7 @@ else ()
         -Wall -Wextra -pedantic -Werror
     )
 endif()
+
+install(TARGETS ${EXEC_FILE_NAME} RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR DEB)
