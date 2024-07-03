@@ -74,8 +74,10 @@ jobs:
           cmakeListsTxtPath: '${{ github.workspace }}/cmakepresets/CMakeLists.txt'
           configurePreset: 'ninja-multi-vcpkg'
           buildPreset: 'ninja-multi-vcpkg'
+          
+            
       - name: Run CMake-CPack
-        run: cmake --build ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg --target package -DPATCH_VERSION=${{ github.run_number }}
+        run: cmake --build ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg --target package 
 
       - name: List $RUNNER_WORKSPACE after build
         run: find $RUNNER_WORKSPACE
