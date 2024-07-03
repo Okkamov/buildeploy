@@ -96,11 +96,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          #asset_path: ./buildeploy-0.0.${{ github.run_number }}-Linux.deb
-          #asset_name: buildeploy-0.0.${{ github.run_number }}-Linux.deb
-          #asset_content_type: application/vnd.debian.binary-package
-          #upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./${{ steps.build.outputs}}.zip
-          asset_name: ${{ github.event.repository.name }}.zip
-          asset_content_type: application/zip
-          #asset_content_type: application/vnd.debian.binary-package
+          asset_path: ./bin/buildeploy-0.0.${{ github.run_number }}-Linux.deb
+          asset_name: buildeploy-0.0.${{ github.run_number }}-Linux.deb
+          asset_content_type: application/vnd.debian.binary-package
