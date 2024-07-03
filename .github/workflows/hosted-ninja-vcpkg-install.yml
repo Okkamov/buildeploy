@@ -75,7 +75,7 @@ jobs:
           configurePreset: 'ninja-multi-vcpkg'
           buildPreset: 'ninja-multi-vcpkg'
       - name: Run CMake-CPack
-        run: cmake --build . --target package
+        run: cmake --build ${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_ROOT_OUT }} --target package
 
       - name: List $RUNNER_WORKSPACE after build
         run: find $RUNNER_WORKSPACE
