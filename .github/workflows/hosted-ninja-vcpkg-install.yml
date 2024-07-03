@@ -100,7 +100,7 @@ jobs:
           #asset_name: buildeploy-0.0.${{ github.run_number }}-Linux.deb
           #asset_content_type: application/vnd.debian.binary-package
           #upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ steps.build.outputs.zip_path }}
+          asset_path: ${{ steps.build.outputs}}
           asset_name: ${{ github.event.repository.name }}.zip
           asset_content_type: application/zip
           #asset_content_type: application/vnd.debian.binary-package
