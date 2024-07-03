@@ -118,7 +118,7 @@
       "name": "default",
       "configurePreset": "ninja",
       "generators": [
-        "TGZ"
+        "DEB"
       ]
     },
     {
@@ -127,7 +127,7 @@
       "name": "ninja-multi-vcpkg",
       "configurePreset": "ninja-multi-vcpkg",
       "generators": [
-        "TGZ"
+        "DEB"
       ],
       "configurations": [
         "Debug"
