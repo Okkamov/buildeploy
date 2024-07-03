@@ -1,8 +1,9 @@
 {
-  "name": "example",
-  "version-string": "0.0.1",
+  "name": "buildeploy",
+  "version-string": "latest",
   "dependencies": [
-    "boost-config",
-    "sqlite3"
+    "gtest",
+    "fmt",
+    "zlib"
   ]
 }
