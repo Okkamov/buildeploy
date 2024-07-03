@@ -28,6 +28,7 @@
       "binaryDir": "${sourceDir}/builds/${presetName}",
       "generator": "Ninja Multi-Config",
       "cacheVariables": {
+        "PATCH_VERSION": "29"
         "CMAKE_TOOLCHAIN_FILE": {
           "type": "FILEPATH",
           "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
