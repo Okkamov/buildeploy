@@ -15,14 +15,15 @@ jobs:
       repository-projects: write
     steps:
     - name:  runer
-      run:   |
-             echo "${{ steps.create_release.outputs.upload_url }} "
-             exit 0
-         
+      run: |
+               echo "${{ github.event.release.upload_url }} "
+               echo "${{ github.workspace }}"
+               echo "${{ github.run_number }}"
+               exit 0
       shell: bash
 
     - name: Upload to release
-      uses: actions/upload-release-asset@v1
+      uses: actions/upload-release-asset@vv1.0.1
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       with:
