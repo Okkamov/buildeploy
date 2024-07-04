@@ -19,8 +19,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          upload_url: ${{ github.event.release.upload_url }} #${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}-win64.zip
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # ${{ github.event.release.upload_url }} #
+          asset_path: D:/a/buildeploy/buildeploy/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.45-win64.zip#${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}-win64.zip
           asset_name: buildeploy-0.0.${{ github.run_number }}-win64.zip
          # D:/a/buildeploy/buildeploy/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.41-win64.zip
           asset_content_type: application/zip
