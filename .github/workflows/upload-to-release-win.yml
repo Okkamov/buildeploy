@@ -23,7 +23,7 @@ jobs:
       shell: bash
 
     - name: Upload to release
-      uses: actions/upload-release-asset@vv1.0.1
+      uses: actions/upload-release-asset@latest
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       with:
