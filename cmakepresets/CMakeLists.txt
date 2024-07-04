@@ -47,7 +47,10 @@ target_link_libraries(${TEST_FILE_NAME} PRIVATE GTest::gtest GTest::gtest_main G
 
 add_test(AllTestsInMain ${TEST_FILE_NAME})
 
+install(TARGETS ${EXEC_FILE_NAME} RUNTIME DESTINATION bin)
+
 if (MSVC)
+    set(CPACK_GENERATOR ZIP)
     target_compile_options(
         ${EXEC_FILE_NAME} PRIVATE
         /W4
@@ -57,6 +60,7 @@ if (MSVC)
         /W4
     )
 else ()
+    set(CPACK_GENERATOR DEB)
     target_compile_options(
         ${EXEC_FILE_NAME} PRIVATE
         -Wall -Wextra -pedantic -Werror
@@ -66,10 +70,6 @@ else ()
         -Wall -Wextra -pedantic -Werror
     )
 endif()
-
-install(TARGETS ${EXEC_FILE_NAME} RUNTIME DESTINATION bin)
-
-set(CPACK_GENERATOR DEB)
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
