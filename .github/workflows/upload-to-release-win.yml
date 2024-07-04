@@ -1,9 +1,9 @@
 name: upload-to-release-win
-
-on: 
-  release:
-    types:
-      - created
+on: release
+#on: 
+#  release:
+#    types:
+#      - created
 
 jobs:
   job:
