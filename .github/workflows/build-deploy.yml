@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: build
         id: build_step
-        run: echo "build_id=$RANDOM" >> $GITHUB_OUTPUT
+        run: echo "build_id=${{ steps.build_step.outputs.build_id }}" >> $GITHUB_OUTPUT
   deploy:
     needs: build
     runs-on: ubuntu-latest
