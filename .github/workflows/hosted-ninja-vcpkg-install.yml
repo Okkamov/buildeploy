@@ -75,8 +75,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - env:
+          Upload_url: ${{ needs.print_create_release.outputs.upload_url }}"
         with:
           submodules: true
+      
+          
 
       - uses: lukka/get-cmake@latest
       - name: List $RUNNER_WORKSPACE before build
@@ -110,6 +114,11 @@ jobs:
       - name: List $RUNNER_WORKSPACE after build
         run: find $RUNNER_WORKSPACE
         shell: bash
+
+      - name: Get Output
+        if: matrix.os == 'ubuntu-latest'
+        id: get_output
+        run: echo "$Upload_url"
                 
       - name: Upload Release Asset Linux
         if: matrix.os == 'ubuntu-latest'
@@ -118,15 +127,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.print_create_release.outputs.upload_url }}
+          upload_url: $Upload_url #${{ needs.print_create_release.outputs.upload_url }}
           asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}-Linux.deb
           asset_name: buildeploy-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
-
-      - name: Set Output
-        if: matrix.os == 'ubuntu-latest'
-        id: set_output
-        run: echo "upload_url=${{ needs.print_create_release.outputs.upload_url }}" >> $GITHUB_OUTPUT
           
       #- name: Upload Release Asset Windows
       #  if: matrix.os == 'windows-latest'
