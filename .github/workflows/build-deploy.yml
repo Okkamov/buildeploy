@@ -108,7 +108,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{OUTPUT2}} #${{ needs.print_create_release.outputs.upload_url }}
+          upload_url: ${OUTPUT2} #${{ needs.print_create_release.outputs.upload_url }}
           asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}-Linux.deb
           asset_name: buildeploy-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
