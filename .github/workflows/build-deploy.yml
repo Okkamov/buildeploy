@@ -5,13 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      output1: ${{ steps.create_release.outputs.test }}
+      output1: ${{ steps.step.outputs.test }}
       upload_url: ${{ steps.print_create_release.outputs.test }}
     steps:
-      - id: create_release
-        run: echo "test=r" >> "$GITHUB_OUTPUT"
+      - id: step
+        run: echo "test=AAAAAAAAAA!!!!" >> "$GITHUB_OUTPUT"
       - id: print_create_release
-        run: echo "test=world" >> "$GITHUB_OUTPUT"
+        run: echo "test=BBBBBBBBBBBBB!!!!" >> "$GITHUB_OUTPUT"
   job2:
     runs-on: ubuntu-latest
     needs: job1
