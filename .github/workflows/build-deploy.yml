@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      output1: ${{ steps.step.outputs.test }}
+      output1: ${{ steps.step1.outputs.test }}
       upload_url: ${{ steps.print_create_release.outputs.test }}
     steps:
-      - id: step
+      - id: step1
         run: echo "test=AAAAAAAAAA!!!!" >> "$GITHUB_OUTPUT"
       - id: print_create_release
         run: echo "test=BBBBBBBBBBBBB!!!!" >> "$GITHUB_OUTPUT"
@@ -17,6 +17,6 @@ jobs:
     needs: job1
     steps:
       - env:
-          OUTPUT1: ${{needs.create_release.outputs.output1}}
+          OUTPUT1: ${{needs.step1.outputs.output1}}
           OUTPUT2: ${{needs.print_create_release.outputs.upload_url}}
         run: echo "$OUTPUT1 $OUTPUT2"
