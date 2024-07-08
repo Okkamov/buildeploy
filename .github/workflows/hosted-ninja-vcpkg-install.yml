@@ -26,6 +26,24 @@ name: hosted-ninja-vcpkg-install-cacheoff
 on: workflow_dispatch
 
 jobs:
+  create_release:
+    name: Create release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          #tag_name: ${{ github.ref }}
+          tag_name: ${{ github.run_number }}
+          #release_name: Release ${{ github.ref }}
+          release_name: Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
   job:
     name: ${{ matrix.os }}-${{ github.workflow }}
     runs-on: ${{ matrix.os }}
@@ -84,19 +102,7 @@ jobs:
       - name: List $RUNNER_WORKSPACE after build
         run: find $RUNNER_WORKSPACE
         shell: bash
-        
-      - name: Create Release
-        if: matrix.os == 'ubuntu-latest'
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
-          draft: false
-          prerelease: false
-          
+                
       - name: Upload Release Asset Linux
         if: matrix.os == 'ubuntu-latest'
         id: upload-release-asset
@@ -104,7 +110,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}-Linux.deb
           asset_name: buildeploy-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
@@ -112,7 +118,7 @@ jobs:
       - name: Set Output
         if: matrix.os == 'ubuntu-latest'
         id: set_output
-        run: echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> $GITHUB_OUTPUT
+        run: echo "upload_url=${{ needs.create_release.outputs.upload_url }}" >> $GITHUB_OUTPUT
           
       - name: Upload Release Asset Windows
         if: matrix.os == 'windows-latest'
@@ -120,7 +126,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          upload_url: ${{ needs.set_output.outputs.upload_url }}
+          upload_url: ${{ needs.create_release.outputs.upload_url}}
           asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}-win64.zip
           asset_name: buildeploy-0.0.${{ github.run_number }}-win64.zip
          # D:/a/buildeploy/buildeploy/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.41-win64.zip
