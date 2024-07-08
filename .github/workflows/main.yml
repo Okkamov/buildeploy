@@ -50,9 +50,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - env:
-          Upload_url: ${{ needs.print_create_release.outputs.upload_url }}"
-          run: echo "$Upload_url"
+      #- env:
+      #    Upload_url: ${{ needs.print_create_release.outputs.upload_url }}"
+      #    run: echo "$Upload_url"
         with:
           submodules: true
 
