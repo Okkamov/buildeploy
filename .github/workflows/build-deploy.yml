@@ -3,12 +3,27 @@ on: workflow_dispatch
 jobs:
   job1:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     # Map a step output to a job output
     outputs:
      # output1: ${{ steps.create_release.outputs.test }}
       output2: ${{ steps.step2.outputs.upload_url }}
     steps:
       - id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          #tag_name: ${{ github.ref }}
+          tag_name: ${{ github.run_number }}
+          #release_name: Release ${{ github.ref }}
+          release_name: Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
+      
         #run: echo "test=hello" >> "$GITHUB_OUTPUT"
       - id: step2
         run: echo "upload_url=world" >> "$GITHUB_OUTPUT"
