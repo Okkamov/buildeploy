@@ -9,7 +9,7 @@ jobs:
       output2: ${{ steps.step2.outputs.test }}
     steps:
       - id: step1
-        run: echo "test=hello" >> "$GITHUB_OUTPUT"
+        run: echo "test=https://uploads.github.com/repos/Okkamov/buildeploy/releases/164373286/assets%7B?name,label%7D" >> "$GITHUB_OUTPUT"
       - id: step2
         run: echo "test=world" >> "$GITHUB_OUTPUT"
   job2:
