@@ -20,9 +20,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           #tag_name: ${{ github.ref }}
-          tag_name: ${{ github.run_number }}
+          tag_name: ${{ github.run_number }}_${{github.run_id}}
           #release_name: Release ${{ github.ref }}
-          release_name: Release ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}_${{github.run_id}}
           draft: false
           prerelease: false
                 
@@ -111,8 +111,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{needs.job1.outputs.output2}} #${{ needs.print_create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}-Linux.deb
-          asset_name: buildeploy-0.0.${{ github.run_number }}-Linux.deb
+          asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}_${{github.run_id}}-Linux.deb
+          asset_name: buildeploy-0.0.${{ github.run_number }}_${{github.run_id}}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
           
       - name: Upload Release Asset Windows
@@ -122,7 +122,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
           upload_url: ${{needs.job1.outputs.output2}}
-          asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}-win64.zip
-          asset_name: buildeploy-0.0.${{ github.run_number }}-win64.zip
+          asset_path: ${{ github.workspace }}/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.${{ github.run_number }}_${{github.run_id}}-win64.zip
+          asset_name: buildeploy-0.0.${{ github.run_number }}_${{github.run_id}}-win64.zip
          # D:/a/buildeploy/buildeploy/cmakepresets/builds/ninja-multi-vcpkg/buildeploy-0.0.41-win64.zip
           asset_content_type: application/zip
