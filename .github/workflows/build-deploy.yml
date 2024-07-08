@@ -25,6 +25,7 @@ jobs:
           release_name: Release ${{ github.run_number }}
           draft: false
           prerelease: false
+          allowUpdates: true
       
         #run: echo "test=hello" >> "$GITHUB_OUTPUT"
       - id: step2
