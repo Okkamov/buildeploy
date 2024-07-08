@@ -31,6 +31,7 @@ jobs:
   job:
     name: ${{ matrix.os }}-${{ github.workflow }}
     runs-on: ${{ matrix.os }}
+    needs: create_release
     permissions:
       contents: write
       pull-requests: write
