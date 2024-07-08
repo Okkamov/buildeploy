@@ -1,22 +1,35 @@
 name: Build and deploy
 on: workflow_dispatch
 jobs:
-  job1:
+  create_release:
+    name: Create release
     runs-on: ubuntu-latest
-    # Map a step output to a job output
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     outputs:
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
+      upload_url: ${{ steps.print_create_release.outputs.upload_url }}
+      #output2: ${{ steps.step2.outputs.test }}
     steps:
-      - id: step1
-        run: echo "test=hello" >> "$GITHUB_OUTPUT"
-      - id: step2
-        run: echo "test=world" >> "$GITHUB_OUTPUT"
+      - id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          #tag_name: ${{ github.ref }}
+          tag_name: ${{ github.run_number }}
+          #release_name: Release ${{ github.ref }}
+          release_name: Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
+      - id: print_create_release
+        run: echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> "$GITHUB_OUTPUT"
   job2:
     runs-on: ubuntu-latest
-    needs: job1
+    needs: create_release
     steps:
       - env:
-          OUTPUT1: ${{needs.job1.outputs.output1}}
-          OUTPUT2: ${{needs.job1.outputs.output2}}
-        run: echo "$OUTPUT1 $OUTPUT2"
+          OUTPUT1: ${{needs.print_create_release.outputs.upload_url}}
+          #OUTPUT2: ${{needs.job1.outputs.output2}}
+        run: echo "$OUTPUT1"
