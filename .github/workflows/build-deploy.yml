@@ -1,5 +1,5 @@
 name: Build and deploy
-on: workflow_dispatch
+on: [push, workflow_dispatch]
 jobs:
   job1:
     runs-on: ubuntu-latest
