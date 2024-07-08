@@ -30,6 +30,6 @@ jobs:
     needs: create_release
     steps:
       - env:
-          OUTPUT1: ${{needs.print_create_release.outputs.uploadurl1}}
+          OUTPUT1: ${{needs.create_release.outputs.uploadurl1}}
           #OUTPUT2: ${{needs.job1.outputs.output2}}
         run: echo "$OUTPUT1"
