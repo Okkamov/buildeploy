@@ -9,7 +9,7 @@ jobs:
       pull-requests: write
       repository-projects: write
     outputs:
-      uploadurl1: ${{ steps.print_create_release.outputs.uploadurl }}
+      uploadurl: ${{ steps.print_create_release.outputs.uploadurl }}
       #output2: ${{ steps.step2.outputs.test }}
     steps:
       - id: create_release
@@ -30,6 +30,6 @@ jobs:
     needs: create_release
     steps:
       - env:
-          OUTPUT1: ${{needs.create_release.outputs.uploadurl1}}
+          OUTPUT1: ${{needs.create_release.outputs.uploadurl}}
           #OUTPUT2: ${{needs.job1.outputs.output2}}
         run: echo "$OUTPUT1"
