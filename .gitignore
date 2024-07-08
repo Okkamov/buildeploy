@@ -5,3 +5,5 @@ build/
 vcpkg_installed/
 cmakepresets/vcpkg_installed/*
 *_
+
+name.docx
