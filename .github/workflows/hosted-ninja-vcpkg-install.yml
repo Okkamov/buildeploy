@@ -29,6 +29,10 @@ jobs:
   create_release:
     name: Create release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
