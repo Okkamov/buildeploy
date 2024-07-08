@@ -7,6 +7,8 @@ jobs:
       contents: write
       pull-requests: write
       repository-projects: write
+    strategy:
+      fail-fast: false
     # Map a step output to a job output
     outputs:
      # output1: ${{ steps.create_release.outputs.test }}
@@ -56,9 +58,9 @@ jobs:
           #  vcpkgCommitId: 'a42af01b72c28a8e1d7b48107b33e4f286a55ef6'
 
     steps:
-      - env:
-          OUTPUT2: ${{needs.job1.outputs.output2}}
-        run: echo "$OUTPUT2"
+      #- env:
+      #    OUTPUT2: ${{needs.job1.outputs.output2}}
+      #  run: echo "$OUTPUT2"
       - uses: actions/checkout@v3
         with:
           submodules: true
