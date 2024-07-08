@@ -9,7 +9,7 @@ jobs:
       pull-requests: write
       repository-projects: write
     outputs:
-      uploadurl: ${{ steps.print_create_release.outputs.uploadurl }}
+      uploadurl1: ${{ steps.print_create_release.outputs.uploadurl }}
       #output2: ${{ steps.step2.outputs.test }}
     steps:
       - id: create_release
@@ -24,12 +24,12 @@ jobs:
           draft: false
           prerelease: false
       - id: print_create_release
-        run: echo "uploadurl=${{ steps.create_release.outputs.upload_url }}" >> "$GITHUB_OUTPUT"
+        run: echo "uploadurl=http" >> "$GITHUB_OUTPUT"
   job2:
     runs-on: ubuntu-latest
     needs: create_release
     steps:
       - env:
-          OUTPUT1: ${{needs.print_create_release.outputs.uploadurl}}
+          OUTPUT1: ${{needs.print_create_release.outputs.uploadurl1}}
           #OUTPUT2: ${{needs.job1.outputs.output2}}
         run: echo "$OUTPUT1"
