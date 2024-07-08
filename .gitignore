@@ -1,7 +1,8 @@
 .vscode/
 bin/
 vcpkg_manifest/vcpkg_installed/*
-build/
+builds/*
+build/*
 vcpkg_installed/
 cmakepresets/vcpkg_installed/*
 *_
