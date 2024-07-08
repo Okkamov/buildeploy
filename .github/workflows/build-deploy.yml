@@ -9,7 +9,7 @@ jobs:
       repository-projects: write
     strategy:
       fail-fast: false
-    # Map a step output to a job output
+    
     outputs:
      # output1: ${{ steps.create_release.outputs.test }}
       output2: ${{ steps.step2.outputs.upload_url }}
