@@ -1,6 +1,8 @@
 .vscode/
+.idea/
 bin/
 vcpkg_manifest/vcpkg_installed/*
+cmake-build-debug/
 builds/*
 build/*
 vcpkg_installed/

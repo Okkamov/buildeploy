@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.29)
 
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
-set(PROJECT_VESRION 0.0.${PATCH_VERSION})
+set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
 set(MY_PROJECT_NAME buildeploy)
 set(EXEC_FILE_NAME bdcli)
@@ -19,7 +19,7 @@ set(TEST_SRC testlist.cpp)
 project(${MY_PROJECT_NAME} VERSION ${PROJECT_VESRION})
 
 find_package(ZLIB REQUIRED)
-find_package(fmt CONFIG REQUIRED)
+find_package(fmt REQUIRED)
 
 # Main target
 add_executable(${EXEC_FILE_NAME} ${SOURCES})
